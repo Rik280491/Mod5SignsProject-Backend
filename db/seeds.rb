@@ -8,7 +8,7 @@
 
 
 
-u1 = User.create(username:"master", password_digest:"master")
+u1 = User.create(username:"master", password:"master")
 
 signVideos = Cloudinary::Api.resources(options = {
     :resource_type => :video,
@@ -24,7 +24,8 @@ names = ["Happy", "Toilet", "Thanks", "Woman", "Sorry", "Sad", "Man", "How are y
    signVideos["resources"].zip(names).each do |sign, name|
     p url = sign["secure_url"] 
     p sign_name = name
-    Sign.create(name: sign_name, video_url: url, user: User.all.first)
+    new_sign = Sign.create(name: sign_name)
+    Video.create(video_url: url, user: u1, sign: new_sign)
  
 
 end

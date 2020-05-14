@@ -2,7 +2,7 @@ class SignsController < ApplicationController
 
     def index 
         signs = Sign.all 
-        render json: signs
+        render json: signs, include: [:videos]
     end 
 
     
@@ -21,8 +21,7 @@ class SignsController < ApplicationController
       private 
     
       def sign_params 
-        # doesn't need user_id, user token 
-        params.require(:sign).permit(:name, :video_url)
+        params.require(:sign).permit(:name, :video)
       end
 
     
