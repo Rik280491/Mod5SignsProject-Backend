@@ -2,12 +2,22 @@ class VideosController < ApplicationController
 
 
     def index 
-        videos = Video.all 
-        render json: videos 
+        videos = Video.all
+        # sort alphabetically
+        render json: videos, include: [:user, :sign]
+    end 
+
+    def show 
+        video = Video.find(params[:id])
+        render json: video, include: [:user, :sign]
     end 
 
     def create 
-        video = Video.create(video_params)
+        user = get_user
+        video = user.videos.build(video_params)
+        # byebug 
+        video.save
+        # error handling 
         render json: video
     end 
 
@@ -15,6 +25,6 @@ class VideosController < ApplicationController
     private 
     
     def video_params 
-        params.require(:video).permit(:video_url, :sign, :user)
+        params.require(:video).permit(:video_url, :sign)
     end 
 end

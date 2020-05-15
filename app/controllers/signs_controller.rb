@@ -21,7 +21,7 @@ class SignsController < ApplicationController
       private 
     
       def sign_params 
-        params.require(:sign).permit(:name, :video)
+        params.require(:sign).permit(:name)
       end
 
     
