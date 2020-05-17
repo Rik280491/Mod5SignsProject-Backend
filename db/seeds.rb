@@ -15,7 +15,7 @@ signVideos = Cloudinary::Api.resources(options = {
     :max_results => 1000
 })
     
-names = ["Happy", "Toilet", "Thanks", "Woman", "Sorry", "Sad", "Man", "How are you?", "Morning", "Evening", "Goodbye", "Hello", "Afternoon", "Good", "Angry", "Child"]
+names = ["Happy", "Toilet", "Thanks", "Woman", "Sorry", "Sad", "Man", "How are you", "Morning", "Evening", "Goodbye", "Hello", "Afternoon", "Good", "Angry", "Child"]
 
 
 
