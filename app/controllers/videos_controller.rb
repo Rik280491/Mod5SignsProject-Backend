@@ -14,6 +14,7 @@ class VideosController < ApplicationController
 
     def create 
         user = get_user
+        byebug
         video = user.videos.build(video_params)
         # byebug 
         video.save
@@ -25,6 +26,6 @@ class VideosController < ApplicationController
     private 
     
     def video_params 
-        params.require(:video).permit(:video_url, :sign)
+        params.require(:video).permit(:video_url, :sign_id)
     end 
 end
