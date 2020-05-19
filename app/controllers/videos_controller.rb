@@ -12,14 +12,6 @@ class VideosController < ApplicationController
         render json: video, include: [:user, :sign]
     end 
 
-    # def create 
-    #     user = get_user
-    #     video = user.videos.build(video_params)
-    #     # byebug 
-    #     video.save
-    #     # error handling 
-    #     render json: video
-    # end 
 
 
     private 
