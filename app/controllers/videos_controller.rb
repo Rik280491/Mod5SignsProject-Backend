@@ -3,8 +3,10 @@ class VideosController < ApplicationController
 
     def index 
         videos = Video.all
+
+        # videos = get_user.videos
         # sort alphabetically
-        render json: videos, include: [:user, :sign]
+        render json: videos, include: [:sign, :user]
     end 
 
     def show 
@@ -12,6 +14,11 @@ class VideosController < ApplicationController
         render json: video, include: [:user, :sign]
     end 
 
+    def destroy
+        video = Video.find(params[:id])
+        video.destroy
+        render json: video
+    end 
 
 
     private 

@@ -10,13 +10,16 @@ class SignsController < ApplicationController
       def create 
         
         # error handling 
+        if params[:sign_name] != ""
         sign = Sign.find_or_create_by(name: params[:sign_name])
           
           video = get_user.videos.build(sign_id: sign.id, video_url: params[:video_url])
           video.save
           
           render json: sign, include: [:videos]
-       
+        else 
+          render json: { error: "Sign must have a name" }
+        end
       end
     
     
