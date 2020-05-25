@@ -1,7 +1,7 @@
 class SignsController < ApplicationController
 
     def index 
-        signs = Sign.all 
+        signs = Sign.all.sort{ |a, b| a.name <=> b.name }
         render json: signs, include: [:videos, :users]
     end 
 
@@ -18,6 +18,7 @@ class SignsController < ApplicationController
           
           # render json: sign, include: [:videos]
           render json: { message: "Your video has been uploaded. Thank you for your contribution!"}
+      
         else 
           render json: { error: "Sign must have a name" }
         end
