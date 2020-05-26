@@ -18,7 +18,6 @@ class SignsController < ApplicationController
           video = get_user.videos.build(sign_id: sign.id, video_url: params[:video_url])
           video.save
           
-          # render json: sign, include: [:videos, :users]
           render json: {sign: sign.serialise_details, message: "Your video has been uploaded. Thank you for your contribution!"}
           
       
