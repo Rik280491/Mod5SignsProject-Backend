@@ -3,9 +3,6 @@ class VideosController < ApplicationController
 
     def index 
         videos = Video.all
-
-        # videos = get_user.videos
-        # sort alphabetically
         render json: videos, include: [:sign, :user]
     end 
 
