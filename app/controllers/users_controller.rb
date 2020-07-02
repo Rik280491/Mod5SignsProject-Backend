@@ -6,10 +6,17 @@ class UsersController < ApplicationController
     end 
 
      def create
-       user = User.create(username: params[:username], password: params[:password])
-       render json: { username: user.username, token: generate_token(id: user.id) }
+        user = User.find_by(username: params[:username])
+        byebug
+       if user
+          render json: { error: "Username already exists"}
+       else
+        user = User.create(username: params[:username], password: params[:password]) 
+        render json: { username: user.username, token: generate_token(id: user.id) }
+       end
     end
      
+
     def show 
         user = User.find(params[:id])
         render json: user, include: [:videos]
